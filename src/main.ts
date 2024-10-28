@@ -1,11 +1,17 @@
-// main.js
-import { fetchImageUrl, fetchBearData } from './fetch.js';
-import { renderBears, setupCommentToggle, setupCommentForm } from './ui.js';
+import { fetchImageUrl, fetchBearData } from './fetch';
+import { renderBears, setupCommentToggle, setupCommentForm } from './ui';
+
+interface Bear {
+  name: string;
+  binomial: string;
+  image: string;
+  range: string;
+}
 
 // Extract bears from Wikitext
-const extractBears = async (wikitext) => {
+const extractBears = async (wikitext: string): Promise<void> => {
   const speciesTables = wikitext.split('{{Species table/end}}');
-  const bears = [];
+  const bears: Bear[] = [];
 
   for (const table of speciesTables) {
     const rows = table.split('{{Species table/row');
@@ -14,17 +20,16 @@ const extractBears = async (wikitext) => {
       const binomialMatch = row.match(/\|binomial=(.*?)\n/);
       const imageMatch = row.match(/\|image=(.*?)\n/);
       const rangeMatch = row.match(/\|range=(.*?)\n/);
-      const range = rangeMatch ? rangeMatch[1].trim() : "Unknown";
+      const range = rangeMatch ? rangeMatch[1].trim() : 'Unknown';
 
-      if (nameMatch && binomialMatch && imageMatch) {
+      if (nameMatch !== null && binomialMatch !== null && imageMatch !== null) {
         const fileName = imageMatch[1].trim().replace('File:', '');
-
         const imageUrl = await fetchImageUrl(fileName);
-        const bear = {
+        const bear: Bear = {
           name: nameMatch[1],
           binomial: binomialMatch[1],
           image: imageUrl,
-          range: range
+          range,
         };
         bears.push(bear);
       }
@@ -34,13 +39,15 @@ const extractBears = async (wikitext) => {
 };
 
 // Fetch and display bear data
-const initialize = async () => {
+const initialize = async (): Promise<void> => {
   const wikitext = await fetchBearData();
-  if (wikitext) await extractBears(wikitext);
+  if (wikitext != null && wikitext !== '') {
+    await extractBears(wikitext);
+  }
 
   setupCommentToggle();
   setupCommentForm();
 };
 
-// Start the application
-initialize();
+// Start the application with explicit handling
+void initialize();

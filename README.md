@@ -161,15 +161,15 @@ element.appendChild(para);
 
 ### 5. Poor Code Organization (Lack of Modularity)
 
-**Bad Practice**: All functionality placed within a single file (`main.js`), making it difficult to maintain and extend.
+**Bad Practice**: All functionality placed within a single file (`main.ts`), making it difficult to maintain and extend.
 
 **Explanation**: Keeping all code in one file leads to poor separation of concerns, makes it harder to find or reuse specific code parts, and complicates debugging.
 
 **Solution - Modularize the Code**:
 - Created separate modules (files) for different functionalities:
-  - `fetch.js`: Contains API fetching functions.
-  - `ui.js`: Contains functions related to updating the DOM.
-  - `main.js`: Acts as the entry point, orchestrating the other modules.
+  - `fetch.ts`: Contains API fetching functions.
+  - `ui.ts`: Contains functions related to updating the DOM.
+  - `main.ts`: Acts as the entry point, orchestrating the other modules.
 
 **Why It’s Better**: Splitting the code into separate modules helps maintain a clean separation of concerns, making the code easier to navigate, debug, and extend in the future.
 
@@ -231,6 +231,15 @@ Apply the following ruleset for Prettier:
 >  **What improvements in your codebase were introduced by using TS instead of JS? Name at least 3 and explain why.**
 
 Present your findings here...
+
+## Benefits of Using TypeScript Over JavaScript
+
+1. **Enhanced Error Detection with Static Typing**: TypeScript's static typing system helps catch errors at compile time, reducing the risk of runtime errors and improving code stability.
+
+2. **Improved Code Readability and Maintainability**: Defining explicit types for variables, function parameters, and return values in TypeScript makes code easier to understand and maintain, as the expected data types are clearly defined.
+
+3. **Enhanced Developer Tools and Autocompletion**: TypeScript provides better integration with IDEs, including features like autocompletion, type inference, and code navigation, which streamline development and help prevent common errors.
+
 
 ## 3.	CI/CD Pipeline Playground (5 Pts.)
 Implementation of a CI/CD pipeline to automate the development and deployment process – write automated tests.
