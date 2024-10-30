@@ -12,8 +12,9 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "types": ["vitest"]  // Ensure 'vitest' types are included
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.test.ts", "src/**/*.spec.ts"],
   "exclude": ["node_modules"]
 }
