@@ -20,9 +20,14 @@ const extractBears = async (wikitext: string): Promise<void> => {
       const binomialMatch = row.match(/\|binomial=(.*?)\n/);
       const imageMatch = row.match(/\|image=(.*?)\n/);
       const rangeMatch = row.match(/\|range=(.*?)\n/);
-      const range = rangeMatch ? rangeMatch[1].trim() : 'Unknown';
+      const range =
+        rangeMatch?.[1] !== undefined ? rangeMatch[1].trim() : 'Unknown';
 
-      if (nameMatch !== null && binomialMatch !== null && imageMatch !== null) {
+      if (
+        nameMatch?.[1] !== undefined &&
+        binomialMatch?.[1] !== undefined &&
+        imageMatch?.[1] !== undefined
+      ) {
         const fileName = imageMatch[1].trim().replace('File:', '');
         const imageUrl = await fetchImageUrl(fileName);
         const bear: Bear = {
@@ -41,8 +46,10 @@ const extractBears = async (wikitext: string): Promise<void> => {
 // Fetch and display bear data
 const initialize = async (): Promise<void> => {
   const wikitext = await fetchBearData();
-  if (wikitext != null && wikitext !== '') {
+  if (wikitext !== undefined && wikitext.trim() !== '') {
     await extractBears(wikitext);
+  } else {
+    console.error('No wikitext data available to extract bears.');
   }
 
   setupCommentToggle();

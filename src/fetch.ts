@@ -6,7 +6,7 @@ interface Page {
   pageid: number;
   ns: number;
   title: string;
-  imageinfo: ImageInfo[];
+  imageinfo?: ImageInfo[];
 }
 
 interface QueryResponse {
@@ -32,11 +32,17 @@ export const fetchImageUrl = async (fileName: string): Promise<string> => {
   try {
     const response = await fetch(url);
     const data: QueryResponse = await response.json();
+
     const pages = data.query.pages;
     const page = Object.values(pages)[0];
-    return page?.imageinfo?.[0]?.url && page.imageinfo[0].url !== ''
-      ? page.imageinfo[0].url
-      : 'placeholder-image-url';
+
+    const imageUrl = page?.imageinfo?.[0]?.url;
+
+    if (imageUrl != null && imageUrl.trim() !== '') {
+      return imageUrl;
+    } else {
+      return 'placeholder-image-url';
+    }
   } catch (error) {
     console.error('Error fetching image URL:', error);
     return 'placeholder-image-url'; // Fallback in case of an error
@@ -61,5 +67,6 @@ export const fetchBearData = async (): Promise<string | undefined> => {
     return data.parse?.wikitext?.['*'];
   } catch (error) {
     console.error('Error fetching bear data:', error);
+    return undefined;
   }
 };

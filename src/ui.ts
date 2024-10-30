@@ -7,8 +7,9 @@ interface Bear {
 
 // Function to render bears to the DOM
 export const renderBears = (bears: Bear[]): void => {
-  const moreBearsSection = document.querySelector('.more_bears') as HTMLElement;
-  if (moreBearsSection) {
+  const moreBearsSection = document.querySelector('.more_bears');
+
+  if (moreBearsSection instanceof HTMLElement) {
     moreBearsSection.innerHTML = '';
     bears.forEach((bear) => {
       moreBearsSection.innerHTML += `
@@ -19,55 +20,67 @@ export const renderBears = (bears: Bear[]): void => {
         </div>
       `;
     });
+  } else {
+    console.error('Element .more_bears not found or is not an HTMLElement');
   }
 };
 
 // Function to set up the comments section toggle
 export const setupCommentToggle = (): void => {
-  // Use type assertions for `HTMLDivElement` for elements needing `style` and `onclick`
-  const showHideBtn = document.querySelector('.show-hide') as HTMLDivElement;
-  const commentWrapper = document.querySelector('.comment-wrapper') as HTMLDivElement;
+  const showHideBtn = document.querySelector('.show-hide');
+  const commentWrapper = document.querySelector('.comment-wrapper');
 
-  if (showHideBtn && commentWrapper) {
+  if (
+    showHideBtn instanceof HTMLDivElement &&
+    commentWrapper instanceof HTMLDivElement
+  ) {
     commentWrapper.style.display = 'none';
 
     showHideBtn.onclick = () => {
       showHideBtn.textContent =
-          showHideBtn.textContent === 'Show comments'
-              ? 'Hide comments'
-              : 'Show comments';
+        showHideBtn.textContent === 'Show comments'
+          ? 'Hide comments'
+          : 'Show comments';
       commentWrapper.style.display =
-          commentWrapper.style.display === 'none' ? 'block' : 'none';
+        commentWrapper.style.display === 'none' ? 'block' : 'none';
     };
+  } else {
+    console.error(
+      'Show/hide button or comment wrapper not found or incorrect type.'
+    );
   }
 };
 
 // Function to handle form submission for adding new comments
 export const setupCommentForm = (): void => {
-  // Explicitly cast the form element to `HTMLFormElement` for `onsubmit`
-  const form = document.querySelector('.comment-form') as HTMLFormElement;
-  const nameField = document.querySelector('#name') as HTMLInputElement;
-  const commentField = document.querySelector('#comment') as HTMLInputElement;
-  const list = document.querySelector('.comment-container') as HTMLUListElement;
+  const form = document.querySelector('.comment-form');
+  const nameField = document.querySelector('#name');
+  const commentField = document.querySelector('#comment');
+  const list = document.querySelector('.comment-container');
 
-  if (form && nameField && commentField && list) {
+  if (
+    form instanceof HTMLFormElement &&
+    nameField instanceof HTMLInputElement &&
+    commentField instanceof HTMLInputElement &&
+    list instanceof HTMLUListElement
+  ) {
     form.onsubmit = (e: SubmitEvent) => {
       e.preventDefault();
       const listItem = document.createElement('li');
       const namePara = document.createElement('p');
       const commentPara = document.createElement('p');
 
-      // Check if values are defined before assigning
       namePara.textContent = nameField.value ?? '';
       commentPara.textContent = commentField.value ?? '';
 
-      list.appendChild(listItem);
       listItem.appendChild(namePara);
       listItem.appendChild(commentPara);
+      list.appendChild(listItem);
 
-      // Clear values after submission
       nameField.value = '';
       commentField.value = '';
     };
+  } else {
+    console.error('Form elements not found or incorrect types.');
   }
 };
