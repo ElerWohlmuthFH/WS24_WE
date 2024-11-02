@@ -267,7 +267,7 @@ Test the current color contrast (text/background), report the results of the tes
 
 **Findings:**
 
-Using the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/), we tested the color contrast between text and background colors on the website. Several elements failed to meet the WCAG AA minimum contrast ratio of 4.5:1.
+Using the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/), I tested the color contrast between text and background colors on the website. Several elements failed to meet the WCAG AA minimum contrast ratio of 4.5:1.
 
 1. **Navigation Bar:**
   - **Text Color:** Black (`#000000`)
@@ -367,7 +367,7 @@ The ``<audio>`` player isn't accessible to hearing impaired (deaf) people — ca
 
 1. **Search Form Input Lacking Label:**
   - The search input lacked an associated label, making it inaccessible to screen readers.
-  - We wanted to avoid adding a visible label that might disrupt the design.
+  - I wanted to avoid adding a visible label that might disrupt the design.
 
 2. **Comment Form Inputs Not Properly Associated with Labels:**
   - Labels were not unambiguously associated with their inputs.
