@@ -433,6 +433,11 @@ What other accessibility issues did you find? Explain how you did fix them.
 
    ```html
    <img src="media/wild-bear.jpg" alt="A wild bear in the forest">
+   ```
+2. **Changed font for accessibility:**
+- **Issue:** The use of serif and decorative fonts hindered readability, especially for users with visual impairments.
+- **Fix:** Changed all fonts to 'Open Sans'
+
 
 # Extended Coding Playgrounds
 Please create a new independent Repository for these playgrounds and submit a link to it in the Moodle submission. 

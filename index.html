@@ -4,7 +4,11 @@
   <meta charset="utf-8">
 
   <title>Web Engineering Coding Playground</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
+  <!-- Updated Font Link -->
+  <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
+          rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css">
 
   <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
@@ -14,6 +18,8 @@
 </head>
 
 <body>
+<a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
+
 <header class="header">
   <h1>Welcome to our wildlife website</h1>
 </header>
@@ -28,12 +34,12 @@
 
   <form class="search">
     <label for="search-input" class="visually-hidden">Search query</label>
-    <input type="search" name="q" id="search-input" placeholder="Search query">
-    <input type="submit" value="Go!">
+    <input type="search" name="q" id="search-input" placeholder="Search query" />
+    <input type="submit" value="Go!" />
   </form>
 </nav>
 
-<main>
+<main id="main-content">
   <article>
     <h2>The trouble with Bears</h2>
 
@@ -95,13 +101,13 @@
       Wild bears eat a variety of meat, fish, fruit, nuts, and other naturally growing ingredients. In general, they will hunt for food themselves in woodland or rivers, but at a push they will track down their sustenance from farms or country houses. They tend to live in relative isolation, in caves, tents, or cottages.
     </p>
 
-    <img src="media/wild-bear.jpg" alt="A wild bear in the forest">
+    <img src="media/wild-bear.jpg" alt="A wild bear in the forest" />
 
     <p>
       Urban (gentrified) bears, on the other hand, have largely abandoned the old ways. They will hunt other urban creatures if necessary (including other predators like rats and foxes), but prefer to scavenge from readily available urban food outlets like dumpsters, bins, and fast food joints. When food has proven scarce, urban bears have even been known to break into people's kitchens and steal essentials like baked beans, ready meals, and microwave ovens.
     </p>
 
-    <img src="media/urban-bear.jpg" alt="An urban bear near a dumpster">
+    <img src="media/urban-bear.jpg" alt="An urban bear near a dumpster" />
 
     <p>
       Urban bears will sleep anywhere they can, from bus shelters and parks, to the toilets in McDonald's, to their own apartment.
@@ -116,8 +122,8 @@
     <p>The following audio clip contains a fact file providing more details about bear mating rituals, along with samples and quotes from experts.</p>
 
     <audio controls>
-      <source src="media/bear.mp3" type="audio/mp3">
-      <source src="media/bear.ogg" type="audio/ogg">
+      <source src="media/bear.mp3" type="audio/mp3" />
+      <source src="media/bear.ogg" type="audio/ogg" />
       <p>Your browser does not support the audio element.</p>
     </audio>
 
@@ -144,14 +150,14 @@
         <form class="comment-form">
           <div class="flex-pair">
             <label for="name">Your name:</label>
-            <input type="text" name="name" id="name" placeholder="Enter your name">
+            <input type="text" name="name" id="name" placeholder="Enter your name" />
           </div>
           <div class="flex-pair">
             <label for="comment">Your comment:</label>
             <textarea name="comment" id="comment" placeholder="Enter your comment"></textarea>
           </div>
           <div>
-            <input type="submit" value="Submit comment">
+            <input type="submit" value="Submit comment" />
           </div>
         </form>
 

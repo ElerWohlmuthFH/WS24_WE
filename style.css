@@ -1,6 +1,7 @@
 /* General setup */
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -27,22 +28,41 @@ body {
   white-space: nowrap;
 }
 
+.focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  clip: auto;
+  white-space: normal;
+}
+
 /* Typography */
 
-h1, h2, h3 {
-  font-family: 'Sonsie One', cursive;
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700; /* Bold font weight for headings */
   color: #2a2a2a;
 }
 
-p, input, li, table, label, textarea, a {
-  font-family: 'Open Sans Condensed', sans-serif;
+/* Body Text */
+p,
+input,
+li,
+table,
+label,
+textarea,
+a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; /* Regular font weight for body text */
   color: #2a2a2a;
 }
 
 h1 {
   font-size: 4rem;
   text-align: center;
-  color: #2a2a2a;
 }
 
 h2 {
@@ -56,17 +76,14 @@ h3 {
   margin-top: 1.5rem;
 }
 
-p, li, table {
+p,
+li,
+table {
   font-size: 1.6rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Header and Navigation Layout */
-
-header {
-  background-color: #dde;
-  padding: 20px 0;
-}
 
 .nav {
   height: 50px;
@@ -78,23 +95,27 @@ header {
 
 .nav ul {
   padding: 0;
+  margin: 0; /* Reset default margins */
   list-style-type: none;
   flex: 2;
   display: flex;
 }
 
 .nav li {
-  display: inline;
-  text-align: center;
+  /* Removed display: inline; */
   flex: 1;
+  text-align: center;
 }
 
 .nav a {
-  display: inline-block;
+  display: flex; /* Changed from inline-block to flex */
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: #FFFFFF; /* White */
+  color: #ffffff; /* White */
+  height: 100%;
 }
 
 .nav .search {
@@ -110,17 +131,28 @@ header {
   height: 32px;
 }
 
-.search input[type="search"] {
+.search input[type='search'] {
   flex: 3;
 }
 
-.search input[type="submit"] {
+.search input[type='submit'] {
   flex: 1;
   margin-left: 1rem;
   background: #333;
   border: 0;
   color: white;
 }
+
+/* Accessibility Focus Styles */
+
+.nav a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #ffffff; /* White outline for contrast */
+  outline-offset: 2px;
+}
+
 
 /* Main Layout */
 
@@ -130,19 +162,19 @@ main {
 
 article {
   flex: 5;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 10px 30px;
   margin-right: 10px;
 }
 
 .secondary {
   flex: 2;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 10px 30px;
 }
 
 footer {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 10px 30px;
   margin-top: 10px;
 }
@@ -162,14 +194,15 @@ caption {
   text-align: center;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   border: 1px solid #2a2a2a;
 }
 
 th {
   background-color: #006400;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -183,7 +216,8 @@ tbody tr:nth-child(odd) {
 
 /* Styling Content Images and Audio */
 
-img, audio {
+img,
+audio {
   display: block;
   margin: 0 auto;
 }
@@ -240,22 +274,27 @@ audio {
   margin-right: 1rem;
 }
 
-.comment-form input, .comment-form textarea {
+.comment-form input,
+.comment-form textarea {
   flex: 6;
 }
 
-.comment-form input, .comment-form label, .show-hide, .comment-form textarea {
+.comment-form input,
+.comment-form label,
+.show-hide,
+.comment-form textarea {
   font-size: 1.6rem;
   line-height: 32px;
 }
 
-.comment-form input[type="submit"], .show-hide {
+.comment-form input[type='submit'],
+.show-hide {
   background: #333;
   border: 0;
   color: white;
 }
 
-.comment-form input[type="submit"] {
+.comment-form input[type='submit'] {
   width: 30%;
   display: block;
   margin: 0 auto;
@@ -329,10 +368,16 @@ footer p {
 
 /* Accessibility Focus Styles */
 
-a, button, input, textarea {
+a,
+button,
+input,
+textarea {
   outline: 2px solid transparent;
 }
 
-a:focus, button:focus, input:focus, textarea:focus {
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
   outline: 2px solid #006400;
 }
