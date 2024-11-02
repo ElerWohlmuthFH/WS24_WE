@@ -31,7 +31,7 @@ export const setupCommentToggle = (): void => {
   const commentWrapper = document.querySelector('.comment-wrapper');
 
   if (
-    showHideBtn instanceof HTMLDivElement &&
+    showHideBtn instanceof HTMLButtonElement &&
     commentWrapper instanceof HTMLDivElement
   ) {
     commentWrapper.style.display = 'none';
@@ -61,17 +61,24 @@ export const setupCommentForm = (): void => {
   if (
     form instanceof HTMLFormElement &&
     nameField instanceof HTMLInputElement &&
-    commentField instanceof HTMLInputElement &&
+    commentField instanceof HTMLTextAreaElement &&
     list instanceof HTMLUListElement
   ) {
     form.onsubmit = (e: SubmitEvent) => {
       e.preventDefault();
+
+      // Simple form validation
+      if (nameField.value.trim() === '' || commentField.value.trim() === '') {
+        alert('Please enter both your name and comment.');
+        return;
+      }
+
       const listItem = document.createElement('li');
       const namePara = document.createElement('p');
       const commentPara = document.createElement('p');
 
-      namePara.textContent = nameField.value ?? '';
-      commentPara.textContent = commentField.value ?? '';
+      namePara.textContent = nameField.value.trim();
+      commentPara.textContent = commentField.value.trim();
 
       listItem.appendChild(namePara);
       listItem.appendChild(commentPara);
