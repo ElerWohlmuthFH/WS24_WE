@@ -59,9 +59,8 @@ Fix application code and answer the questions:
 Present your findings here...
 
 
-# JavaScript Playground - Findings and Improvements
-
-## Overview
+### JavaScript Playground - Findings and Improvements
+#### Overview
 This project was refactored to address various bad coding practices and to implement improvements in code structure, readability, and reliability. Below is a summary of the bad practices identified, explanations of why they were problematic, and descriptions of how each was fixed.
 
 ---
